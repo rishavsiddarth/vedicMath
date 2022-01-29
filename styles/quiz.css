@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&display=swap');
+
+* {
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+.greenBorder{
+    border:2px solid green;
+}
+.redBorder{
+    border:2px solid red;
+}
+
+.answer{
+    font-size:25px;
+}

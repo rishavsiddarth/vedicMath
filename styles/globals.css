@@ -1,0 +1,60 @@
+.fakeimg div {
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+
+.fakeimg img {
+    border-radius: 10px;
+}
+
+.not-found {
+    min-height: 350px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.not-found a {
+    color: #4979ff;
+    text-decoration: underline;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#middlecontent {
+    min-height: 50vh;
+    position: relative;
+}
+
+#header {
+    background: #ff0;
+    padding: 10px;
+}
+
+body {
+    padding-bottom: 60px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: #6cf;
+}
+
+.extra-footer {
+    height: 10vh;
+}
+
+.notes {
+    font-size: 0.75rem;
+}
