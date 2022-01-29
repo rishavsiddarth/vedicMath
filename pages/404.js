@@ -9,7 +9,7 @@ const errorPage = () =>  {
                     <div className="not-found-404">
                         <h1>404</h1>
                     </div>
-                    <h2>We are sorry, Page not found!</h2>
+                    <h2>Hi, We are sorry, Page not found!</h2>
                     <p>The page you are looking for might have been removed had its name changed or it temporarily unavailable.</p>
                     <Link href="/">
                         <a>Back to Homepage</a>
