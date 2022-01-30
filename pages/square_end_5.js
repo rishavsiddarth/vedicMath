@@ -1,6 +1,10 @@
 
 import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
+import { useRouter } from 'next/router';
+import {server} from '../config'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const square_end_5 = () =>  {
     const randomIntSquareEnd5 = (min, max) => {
@@ -18,7 +22,9 @@ const square_end_5 = () =>  {
     const [timerTime, settimerTime] = useState(1);
     const [btnName, setbtnName] = useState('NEXT');
     const totalQues = 3;
+    const quizCategory = 2;
     const Ref = useRef(null)
+    const router = useRouter();
 
     const startTimer = (currentDate) => {
         settimerOn(true)
@@ -76,7 +82,42 @@ const square_end_5 = () =>  {
                     // TIMESTAMP
                     // NO OF QUESTIONS
                     // TIME TAKEN
-                    // CATEGORY OF QUESTION
+                    // CATEGORY OF QUESTION  quizCategory
+                    const onAddScore= async(scoreData) => {
+                        console.log(scoreData);
+                        const res = await fetch(`${server}/api/scores/add`, {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify(scoreData),
+                        })
+                        const result = await res.json();
+                        console.log(result);
+                        
+                        if(result){
+                          if(result.errorCode == 0){
+                            console.log(result.msg);
+                            toast.success(result.msg);
+                          } else {
+                            toast.error(result.msg);
+                          }
+                        //   router.push('/'); //redirecting to home page
+                        } else {
+                          toast.error("Issue while submitting data");
+                        //   router.push('/'); //redirecting to home page
+                        }
+                        
+                  
+                      }
+
+                      const scoreData = {
+                          timestamp: Date.now(),
+                          quizCategory: quizCategory,
+                          noOfQues: totalQues,
+                          timeTaken: Math.floor(timerTime/1000)
+                      }
+                      onAddScore(scoreData);
                 }
                 
             },1000)
@@ -121,6 +162,7 @@ const square_end_5 = () =>  {
                         <Image src="/img/unit_sum_10.jpg" alt="Avatar Logo"  className="rounded-pill" width="596" height="426"/>
                     </div>
                 </div>
+                <ToastContainer />
         </div> 
 
             
